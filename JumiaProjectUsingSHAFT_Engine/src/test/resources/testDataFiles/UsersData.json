@@ -1,3 +1,10 @@
 {
-    "searchQuery": "SHAFT_Engine"
+    "Valid_E-mail": "abcde@tameco.com",
+    "Valid_password": "@a12345678",
+    "Valid_confirm_password": "@a12345678",
+    "Valid_fristName": "Kyrillos",
+    "Valid_lastName": "Nageh",
+    "Valid_Phone": "01206789786",
+    "Valid_gender":"Male",
+    "Valid_birthDate":"01-01-1994"
 }
