@@ -44,6 +44,11 @@ public class HomePage {
 		return By.xpath("//*[text()='Sign In']");
 	}
 	
+	public static By registeredUserName_Txt()
+	{
+		return By.xpath("//label[@class='trig -df -i-ctr -fs16' and contains(text(),'Hi')]");
+	}
+	
 	/****************************************************************************
 	*  >>	Keywords
 	*****************************************************************************/

@@ -4,24 +4,18 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.shaft.driver.DriverFactory;
 import com.shaft.gui.browser.BrowserActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Validations;
 import gui.web.pages.HomePage;
 import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import io.qameta.allure.TmsLink;
 
-@Epic("Jumi Website")
-@Feature("GUI")
-public class CreateAccount_TCs {
-
+public class Login_TCs {
 	/****************************************************************************
 	*  >>	Variables
 	*****************************************************************************/
@@ -31,37 +25,29 @@ public class CreateAccount_TCs {
 	/****************************************************************************
 	*  >>	Test Cases
 	*****************************************************************************/
-	@Test(description = "Valid create account by using E-mail",groups = {"CreateAccount_TCs.createAccountWithValidData"})
-	@Description("When the User enters valid data and clicks on continue, Then the account should be created successfully.")
-	@Story("Create Account")
+
+
+	@Test(description = "Valid login by using valid E-mail and valid passowrd", dependsOnGroups = {"CreateAccount_TCs.createAccountWithValidData"})
+	@Description("When the User enters valid E-mail/PhonNumber,Passoword and clicks on Login."
+			+ "   Then the account should be created successfully.")
+	@Story("Login")
 	@Severity(SeverityLevel.CRITICAL)
 	@TmsLink("JUM-5")
-	public void createAccountWithValidData()
+	public void loginWithValidData()
 	{
 		new HomePage(driver.get())
 		.navigate()
 		.closeHomePagePopUp()
 		.clickSignInBtn()
-		.navigaateToCreateAccountWithEmail(userTestData.getTestData("Valid_E-mail"))
-		.createAccountWithEmail(userTestData.getTestData("Valid_password"),
-				userTestData.getTestData("Valid_fristName"),
-				userTestData.getTestData("Valid_lastName"),
-				userTestData.getTestData("Valid_Phone"), 
-				userTestData.getTestData("Valid_gender"),
-				userTestData.getTestData("Valid_birthDate"));
+		.loginAsDefaultUserWithEmail(userTestData.getTestData("Valid_E-mail"),
+				userTestData.getTestData("Valid_password"));
 		
-//		Validations.assertThat()
-//		.element(driver.get(), CreateAccountPage.accoutCreated_Msg())
-//		.text().contains(userTestData.getTestData("Valid_fristName"))
-//		.perform();   
 		
 		Validations.assertThat()
 		.element(driver.get(), HomePage.registeredUserName_Txt())
 		.text().contains(userTestData.getTestData("Valid_fristName"))
-		.perform(); 
+		.perform();   
 	}
-
-	/*****************************************************************************/
 	
 	@BeforeMethod
 	public void beforeMethod(){
@@ -72,7 +58,5 @@ public class CreateAccount_TCs {
 	@AfterMethod
 	public void afterMethod(){
 		BrowserActions.closeCurrentWindow(driver.get());
-	}
-	
-	
+}
 }

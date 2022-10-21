@@ -96,6 +96,13 @@ public class CreateAccountPage {
 	{
 		return By.id("skip-pin");
 	}
+	
+	private static By getStarted_Btn()
+	{
+		return By.xpath("//*[@type='submit']");
+	}
+	
+	
 	/*	Validation Items	*/
 	public static By accoutCreated_Msg()
 	{
@@ -123,9 +130,9 @@ public class CreateAccountPage {
 
 		new ElementActions(driver)
 		.click(acceptTermsCondition_CheckBox())
-	
 		.click(continueConfirmPersonalDetails_Btn())
-		.click(skip_Btn());
+		.click(skip_Btn())
+		.click(getStarted_Btn());
 	
 		return new HomePage(driver);
 	}
