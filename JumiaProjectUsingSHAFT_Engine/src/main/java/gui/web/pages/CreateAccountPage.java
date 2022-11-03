@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.shaft.gui.element.ElementActions;
+import com.shaft.validation.Validations;
 
 import io.qameta.allure.Step;
 
@@ -109,6 +110,11 @@ public class CreateAccountPage {
 		return By.xpath("//*[@class='my-name']");
 	}
 	
+	private static By accountCreatedSuccssfully_Msg(String name)
+	{
+		return By.xpath("//*[contain(text(),'" + name + ", Your account has been created!')]");
+	}
+	
 	/****************************************************************************
 	*  >>	Keywords
 	*****************************************************************************/
@@ -133,6 +139,7 @@ public class CreateAccountPage {
 		.click(continueConfirmPersonalDetails_Btn())
 		.click(skip_Btn())
 		.click(getStarted_Btn());
+		
 	
 		return new HomePage(driver);
 	}
@@ -155,11 +162,26 @@ public class CreateAccountPage {
 
 		new ElementActions(driver)
 		.click(acceptTermsCondition_CheckBox())
-	
 		.click(continueConfirmPersonalDetails_Btn())
 		.click(skip_Btn());
+		
+		verifyAccountCreatedSuccessfullyMsg(fristName);
 	
 		return new HomePage(driver);
 	}
 	
+	
+	/****************************************************************************
+	*  >>	Verification method
+	*****************************************************************************/
+	
+//	Your account has been created!
+	@Step("Verify Account created successfuly Msg.")
+	public void verifyAccountCreatedSuccessfullyMsg(String userName)
+	{
+		Validations.assertThat()
+		.element(driver, accountCreatedSuccssfully_Msg(userName))
+		.isVisible()
+		.perform();
+	}
 }

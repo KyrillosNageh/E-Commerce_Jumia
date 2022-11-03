@@ -1,10 +1,12 @@
 {
-    "Valid_E-mail": "abcde@tameco.com",
+    "Valid_E-mail": "abcd1@gmail.com",
     "Valid_password": "@a12345678",
     "Valid_confirm_password": "@a12345678",
     "Valid_fristName": "Kyrillos",
     "Valid_lastName": "Nageh",
     "Valid_Phone": "01206789786",
     "Valid_gender":"Male",
-    "Valid_birthDate":"01-01-1994"
+    "Valid_birthDate":"01-01-1994",
+
+    "Product_Name" : "HP 15-da3007nia Laptop -Intel 10th Gen Core I3-1005G1 - 4GB RAM - 1TB HDD – Integrated Intel UHD Graphics - ‎15.6 Inches HD  – FreeDOS – Jet Black (English/Arabic Keyboard)"
 }

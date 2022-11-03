@@ -49,6 +49,16 @@ public class HomePage {
 		return By.xpath("//label[@class='trig -df -i-ctr -fs16' and contains(text(),'Hi')]");
 	}
 	
+	private static By search_TextBar()
+	{
+		return By.id("fi-q");
+	}
+	
+	private static By search_Btn()
+	{
+		return By.xpath("//button[text()='Search']");
+	}
+	
 	/****************************************************************************
 	*  >>	Keywords
 	*****************************************************************************/
@@ -73,5 +83,15 @@ public class HomePage {
 		new ElementActions(driver).click(signIn_btn());
 		
 		return new LoginPage(driver);
+	}
+	
+	@Step("Login as default User with phone number")
+	public SearchResultsPage searchProductName(String productName)
+	{
+		new ElementActions(driver)
+		.type(search_TextBar(), productName)
+		.click(search_Btn());
+		
+		return new SearchResultsPage(driver);
 	}
 }
